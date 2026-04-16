@@ -1,10 +1,10 @@
-# TechCrew
+# Chambey
 
 > Building the Next Generation of Innovators
 
 A modern, responsive web platform for Chambey - a thriving community of young builders, creators, and thinkers exploring the future through technology.
 
-## 🌟 About TechCrew
+## 🌟 About Chambey
 
 TechCrew is a community dedicated to:
 - **Learning** what it means to be part of the Swarm Economy
