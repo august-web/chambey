@@ -6,7 +6,7 @@ A modern, responsive web platform for Chambey - a thriving community of young bu
 
 ## 🌟 About Chambey
 
-TechCrew is a community dedicated to:
+Chambey is a community dedicated to:
 - **Learning** what it means to be part of the Swarm Economy
 - **Driving** purpose by gaining real-world skills
 - **Contributing** to a change-making movement
