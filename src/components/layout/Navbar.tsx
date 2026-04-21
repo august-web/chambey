@@ -3,6 +3,7 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Logo } from "@/components/ui/Logo";
+import { Button } from "@/components/ui/Button";
 import { navItems } from "@/data/siteContent";
 import { useTheme } from "@/hooks/useTheme";
 
@@ -38,7 +39,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <a
+            href="https://donate.stripe.com/bIY3dT5tr3RZ5vW000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:block"
+          >
+            <Button size="sm">Donate</Button>
+          </a>
           <button
             type="button"
             onClick={toggleTheme}
@@ -80,6 +89,14 @@ export function Navbar() {
                   {item.label}
                 </NavLink>
               ))}
+              <a
+                href="https://donate.stripe.com/bIY3dT5tr3RZ5vW000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-1 text-sm font-medium text-blue-500 hover:text-blue-600"
+              >
+                Donate
+              </a>
             </div>
           </motion.nav>
         ) : null}

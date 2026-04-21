@@ -125,11 +125,22 @@ npm preview
 | Route | Component | Purpose |
 |-------|-----------|---------|
 | `/` | HomePage | Main landing page with hero and highlights |
-| `/about` | AboutPage | Chmbey story and mission |
+| `/about` | AboutPage | Chambey story and mission |
 | `/teams` | TeamPage | Leadership and team structure |
 | `/fields` | FieldsPage | Our three core fields of focus |
 | `/contact` | ContactPage | Contact and community engagement |
 | `*` | NotFoundPage | 404 error page |
+
+## Team Content Editing
+
+The Teams page is content-driven from `src/data/siteContent.ts`.
+
+- `leadershipTeam`: Founder and Director spotlight cards
+- `teamClusters`: related/supporting positions grouped by function
+- `collaborationPrinciples`: team operating model
+- `teamRoleHighlights`: image-backed role cards for "Team in Action"
+
+Rendering is handled in `src/pages/TeamPage.tsx`.
 
 ## 🎨 Design Features
 
@@ -143,7 +154,7 @@ npm preview
 
 - **20** TypeScript React Components (.tsx)
 - **~740** Lines of Code (TypeScript/TSX)
-- **3** Core Pages (Home, About, Team)
+- **6** Core Pages (Home, About, Team, Fields, Contact, NotFound)
 - **0** Build Errors / Type Errors
 - **0** Dependency Vulnerabilities
 

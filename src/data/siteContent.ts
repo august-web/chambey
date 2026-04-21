@@ -30,13 +30,21 @@ export type LeadershipMember = {
 export type TeamCluster = {
   title: string;
   description: string;
-  roles: string[];
+  roles: {
+    title: string;
+    focus: string;
+  }[];
 };
 
 export type TeamRoleHighlight = {
   title: string;
   description: string;
   image: string;
+};
+
+export type CollaborationPrinciple = {
+  title: string;
+  description: string;
 };
 
 export const navItems: NavItem[] = [
@@ -76,25 +84,14 @@ export const whatWeDo = [
 
 export const leadershipTeam: LeadershipMember[] = [
   {
-    name: "Founder",
-    title: "Founder & Strategic Lead",
-    bio: "Defines the long-term mission, builds key partnerships, and aligns community growth with real economic opportunity.",
+    name: "Cecil Scott",
+    title: "Executive Director",
+    bio: "Cecil transforms complex challenges into innovative solutions by bridging data-driven insights with human-centered design. With deep expertise in adaptive process design and a passion for digital public infrastructure, he champions equitable pathways to upward mobility. His superpower: creating physiological safety and emotional literacy within high-stakes environments to unlock the best in people and their work.",
     image: "/images/team-founder.jpg",
     responsibilities: [
-      "Vision and strategy",
-      "Partnership development",
-      "Community culture",
-    ],
-  },
-  {
-    name: "Director",
-    title: "Director of Programs",
-    bio: "Leads program delivery, mentors facilitators, and ensures every learning track is measurable, practical, and inclusive.",
-    image: "/images/team-cofounder.jpg",
-    responsibilities: [
-      "Program execution",
-      "Team coordination",
-      "Quality assurance",
+      "Vision and strategic direction",
+      "Process design and operations",
+      "Community partnerships and impact",
     ],
   },
 ];
@@ -104,27 +101,54 @@ export const teamClusters: TeamCluster[] = [
     title: "Learning & Mentorship",
     description: "Specialists who help members build practical, career-ready skills.",
     roles: [
-      "Technical Facilitators",
-      "Curriculum Coordinators",
-      "Project Mentors",
+      {
+        title: "Technical Facilitators",
+        focus: "Run hands-on sessions and unblock member projects.",
+      },
+      {
+        title: "Curriculum Coordinators",
+        focus: "Shape learning paths and track learner outcomes.",
+      },
+      {
+        title: "Project Mentors",
+        focus: "Guide capstone delivery and career readiness.",
+      },
     ],
   },
   {
     title: "Operations & Delivery",
     description: "Team members who keep events, sprints, and communications running smoothly.",
     roles: [
-      "Operations Coordinator",
-      "Community Coordinator",
-      "Partnership Liaison",
+      {
+        title: "Operations Coordinator",
+        focus: "Plans schedules, logistics, and sprint cadence.",
+      },
+      {
+        title: "Community Coordinator",
+        focus: "Keeps members engaged through events and updates.",
+      },
+      {
+        title: "Partnership Liaison",
+        focus: "Connects programs with institutions and sponsors.",
+      },
     ],
   },
   {
     title: "Creative & Support",
     description: "Contributors shaping the brand experience and supporting day-to-day execution.",
     roles: [
-      "Design Lead",
-      "Content and Media Volunteer",
-      "Volunteer Network",
+      {
+        title: "Design Lead",
+        focus: "Owns design consistency across learning products.",
+      },
+      {
+        title: "Content and Media Volunteer",
+        focus: "Captures stories and publishes community updates.",
+      },
+      {
+        title: "Volunteer Network",
+        focus: "Supports workshops, onboarding, and member care.",
+      },
     ],
   },
 ];
@@ -149,6 +173,21 @@ export const teamRoleHighlights: TeamRoleHighlight[] = [
     title: "Volunteers",
     description: "Enthusiastic contributors supporting day-to-day operations.",
     image: "/images/team-volunteer.jpg",
+  },
+];
+
+export const collaborationPrinciples: CollaborationPrinciple[] = [
+  {
+    title: "Shared Ownership",
+    description: "Decisions and outcomes are visible to the whole team.",
+  },
+  {
+    title: "Mentor-Led Delivery",
+    description: "Facilitators pair guidance with practical execution.",
+  },
+  {
+    title: "Continuous Feedback",
+    description: "Weekly check-ins improve quality and learner support.",
   },
 ];
 

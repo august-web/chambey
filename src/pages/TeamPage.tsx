@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionIntro } from "@/components/ui/SectionIntro";
+import { Button } from "@/components/ui/Button";
 import {
+  collaborationPrinciples,
   leadershipTeam,
   teamClusters,
   teamRoleHighlights,
@@ -67,11 +70,28 @@ export function TeamPage() {
                 </div>
                 <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
                   {cluster.roles.map((role) => (
-                    <li key={role} className="border-l-2 border-blue-500 pl-3">
-                      {role}
+                    <li key={role.title} className="border-l-2 border-blue-500 pl-3">
+                      <p className="font-medium text-zinc-900 dark:text-zinc-100">{role.title}</p>
+                      <p>{role.focus}</p>
                     </li>
                   ))}
                 </ul>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-6">
+        <Reveal>
+          <h3 className="text-2xl font-semibold text-zinc-950 dark:text-zinc-100">How We Collaborate</h3>
+        </Reveal>
+        <div className="grid gap-4 md:grid-cols-3">
+          {collaborationPrinciples.map((principle, index) => (
+            <Reveal key={principle.title} delay={index * 0.06}>
+              <article className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950/50">
+                <h4 className="text-base font-semibold text-zinc-950 dark:text-zinc-100">{principle.title}</h4>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">{principle.description}</p>
               </article>
             </Reveal>
           ))}
@@ -102,6 +122,22 @@ export function TeamPage() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      <section className="rounded-xl border border-zinc-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 text-center dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-900">
+        <Reveal>
+          <div className="mx-auto max-w-2xl space-y-4">
+            <h3 className="text-2xl font-semibold text-zinc-950 dark:text-zinc-100">
+              Ready to Join the Team?
+            </h3>
+            <p className="text-zinc-600 dark:text-zinc-300">
+              We're always looking for passionate individuals to help us build the Swarm Economy. Whether you're interested in facilitating, coordinating, or volunteering—let's talk!
+            </p>
+            <Link to="/contact">
+              <Button className="mt-4">Get in Touch</Button>
+            </Link>
+          </div>
+        </Reveal>
       </section>
     </div>
   );
