@@ -7,16 +7,23 @@ import {
   Wallet,
   type LucideIcon,
 } from "lucide-react";
+import { FaLinkedin, FaInstagram, FaYoutube, FaBluesky } from "react-icons/fa6";
 
 export type NavItem = {
   label: string;
   href: string;
 };
 
+export type SocialLink = {
+  label: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+};
+
 export type Field = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: LucideIcon | React.ComponentType<{ className?: string }>;
 };
 
 export type LeadershipMember = {
@@ -213,7 +220,8 @@ export const projects = [
 ];
 
 export const socialLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: Send },
-  { label: "Instagram", href: "https://instagram.com", icon: MessageCircle },
-  { label: "YouTube", href: "https://youtube.com", icon: Globe },
+  { label: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedin },
+  { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
+  { label: "YouTube", href: "https://youtube.com", icon: FaYoutube },
+  { label: "Bluesky", href: "https://bsky.app/profile/chambey.org", icon: FaBluesky },
 ];

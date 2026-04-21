@@ -133,9 +133,7 @@ export function TeamPage() {
             <p className="text-zinc-600 dark:text-zinc-300">
               We're always looking for passionate individuals to help us build the Swarm Economy. Whether you're interested in facilitating, coordinating, or volunteering—let's talk!
             </p>
-            <Link to="/contact">
-              <Button className="mt-4">Get in Touch</Button>
-            </Link>
+            <Button href="/contact" className="mt-4">Get in Touch</Button>
           </div>
         </Reveal>
       </section>

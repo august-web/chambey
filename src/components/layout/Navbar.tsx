@@ -40,14 +40,12 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
+          <Button 
             href="https://donate.stripe.com/bIY3dT5tr3RZ5vW000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:block"
+            external
           >
-            <Button size="sm">Donate</Button>
-          </a>
+            Donate
+          </Button>
           <button
             type="button"
             onClick={toggleTheme}
