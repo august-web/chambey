@@ -1,42 +1,46 @@
-import { Link } from "react-router-dom";
-import { Logo } from "@/components/ui/Logo";
+import { Link, useNavigate } from "react-router-dom";
 import { navItems, socialLinks } from "@/data/siteContent";
+import { useMode } from "@/hooks/useMode";
 
 export function Footer() {
-  return (
-    <footer className="border-t border-zinc-200 bg-white py-10 dark:border-zinc-900 dark:bg-black">
-      <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 md:grid-cols-3 md:px-6">
-        <div className="space-y-4">
-          <Logo showText={true} size="md" />
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">Collaborating for a smarter, more connected world.</p>
-        </div>
+  const navigate = useNavigate();
+  const { setMode } = useMode();
 
-        <div className="space-y-3">
-          <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">Navigation</p>
-          <div className="flex flex-wrap gap-3">
+  const handleNavClick = (href: string) => {
+    navigate(href);
+  };
+
+  return (
+    <footer className="footer">
+      <div className="fi">
+        <div className="ft">
+          <div className="flogo">
+            Cham<span className="co">bey</span>
+          </div>
+          <div className="flinks">
             {navItems.map((item) => (
-              <Link key={item.href} to={item.href} className="text-sm text-zinc-700 hover:text-blue-500 dark:text-zinc-300">
+              <button
+                key={item.href}
+                className="flink"
+                onClick={() => handleNavClick(item.href)}
+              >
                 {item.label}
-              </Link>
+              </button>
             ))}
+            <button
+              className="flink"
+              style={{ color: "var(--tealD)" }}
+              onClick={() => handleNavClick("/support")}
+            >
+              Support
+            </button>
           </div>
         </div>
-
-        <div className="space-y-3">
-          <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">Social</p>
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-zinc-700 transition-colors hover:text-blue-500 dark:text-zinc-300"
-                aria-label={social.label}
-              >
-                <social.icon className="h-5 w-5" />
-              </a>
-            ))}
+        <div className="fb">
+          <span className="fc">© 2026 Chambey. Cross-border collaboration infrastructure.</span>
+          <div style={{ display: "flex", gap: 7 }}>
+            <span className="badge bl">Litany</span>
+            <span className="badge bm">Mulacanoe</span>
           </div>
         </div>
       </div>

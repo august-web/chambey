@@ -1,31 +1,60 @@
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionIntro } from "@/components/ui/SectionIntro";
-import { fields } from "@/data/siteContent";
+import { motion } from "framer-motion";
+import { ArrowRight, Laptop, Palette, Briefcase } from "lucide-react";
+import { useMode } from "@/hooks/useMode";
+import { impactAreas } from "@/data/siteContent";
 
 export function FieldsPage() {
-  return (
-    <div className="mx-auto w-full max-w-6xl space-y-12 px-4 py-16 md:px-6 md:py-20">
-      <Reveal>
-        <SectionIntro
-          eyebrow="Our Approach"
-          title="Empowering communities through collective action & digital access"
-          description="We provide structured pathways through shared resources, skill building, and open communication to help individuals integrate seamlessly into the Swarm Economy."
-        />
-      </Reveal>
+  const { mode } = useMode();
+  const isFoundation = mode === "foundation";
 
-      <div className="grid gap-6">
-        {fields.map((field, index) => (
-          <Reveal key={field.title} delay={index * 0.08}>
-            <article className="grid gap-4 border border-zinc-200 bg-zinc-50 p-8 dark:border-zinc-800 dark:bg-zinc-950 md:grid-cols-[auto,1fr] md:gap-6">
-              <field.icon className="h-10 w-10 text-blue-500" />
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold text-zinc-950 dark:text-zinc-100">{field.title}</h3>
-                <p className="text-zinc-600 dark:text-zinc-300">{field.description}</p>
-              </div>
-            </article>
-          </Reveal>
-        ))}
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+    >
+      <div className="ph">
+        <div className="ph-i">
+          <p className="eyebrow ey-l">{isFoundation ? "Impact areas" : "Active sectors"}</p>
+          <h1 className="pt">{isFoundation ? "Where collaboration creates impact" : "Where deals are moving"}</h1>
+          <p className="ps">
+            {isFoundation
+              ? "The sectors where cross-border work moves fastest."
+              : "The sectors with the most live activity across our corridors."}
+          </p>
+        </div>
       </div>
-    </div>
+
+      <section className="sec s-cream">
+        <div className="si" style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+          {impactAreas.map((area, i) => {
+            const Icon = area.icon;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: i * 0.1 }}
+                className={`card ${isFoundation ? "card-f" : "card-c"}`}
+                style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: "1.5rem", alignItems: "center" }}
+              >
+                <div className={`c-icon ${isFoundation ? "ci-co" : "ci-sa"}`} style={{ margin: 0 }}>
+                  <Icon width={17} height={17} />
+                </div>
+                <div>
+                  <div className="c-title" style={{ fontSize: 17 }}>{area.title}</div>
+                  <div className="c-body">{area.description}</div>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 5, justifyContent: "flex-end", minWidth: 140 }}>
+                  {area.tags.map((tag, j) => (
+                    <span key={j} className="tag">{tag}</span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+    </motion.div>
   );
 }

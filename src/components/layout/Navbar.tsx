@@ -1,58 +1,63 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { cn } from "@/utils/cn";
 import { navItems } from "@/data/siteContent";
-import { useTheme } from "@/hooks/useTheme";
+import { useMode } from "@/hooks/useMode";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const { mode, setMode } = useMode();
+
+  const handleNavClick = (href: string) => {
+    navigate(href);
+    setIsOpen(false);
+  };
+
+  const isFoundation = mode === "foundation";
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur dark:border-zinc-900 dark:bg-black/70"
+      className="sticky top-0 z-50 nav"
     >
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link to="/" className="transition-opacity hover:opacity-80">
-          <Logo size="sm" />
+      <div className="nav-inner">
+        <Link to="/" className="nav-logo" onClick={() => handleNavClick("/")}>
+          Cham<span className="co">bey</span>
+          <span className={cn("nav-badge", isFoundation ? "badge-f" : "badge-c")}>
+            {isFoundation ? "Foundation" : "Corridors"}
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="nav-links">
           {navItems.map((item) => (
-            <NavLink
+            <button
               key={item.href}
-              to={item.href}
-              className={({ isActive }) =>
-                `text-sm transition-colors ${
-                  isActive ? "text-blue-500" : "text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
-                }`
-              }
+              className="nav-link"
+              onClick={() => handleNavClick(item.href)}
             >
               {item.label}
-            </NavLink>
+            </button>
           ))}
+          <button
+            className="nav-link"
+            style={{ color: "var(--tealD)", fontWeight: 500 }}
+            onClick={() => handleNavClick("/support")}
+          >
+            Support
+          </button>
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button 
-            href="https://donate.stripe.com/bIY3dT5tr3RZ5vW000"
-            external
-          >
-            Donate
-          </Button>
           <button
-            type="button"
-            onClick={toggleTheme}
-            className="inline-flex h-9 w-9 items-center justify-center text-zinc-700 transition-colors hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-zinc-100"
-            aria-label="Toggle dark mode"
+            className={cn("nav-cta", isFoundation ? "nav-cta-f" : "nav-cta-c")}
+            onClick={() => handleNavClick("/contact")}
           >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            {isFoundation ? "Join network" : "Start request"}
           </button>
           <button
             type="button"
@@ -76,25 +81,21 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-3">
               {navItems.map((item) => (
-                <NavLink
+                <button
                   key={item.href}
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `py-1 text-sm ${isActive ? "text-blue-500" : "text-zinc-700 dark:text-zinc-300"}`
-                  }
+                  className="py-1 text-sm"
+                  onClick={() => handleNavClick(item.href)}
                 >
                   {item.label}
-                </NavLink>
+                </button>
               ))}
-              <a
-                href="https://donate.stripe.com/bIY3dT5tr3RZ5vW000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-1 text-sm font-medium text-blue-500 hover:text-blue-600"
+              <button
+                className="py-1 text-sm font-medium"
+                style={{ color: "var(--tealD)" }}
+                onClick={() => handleNavClick("/support")}
               >
-                Donate
-              </a>
+                Support
+              </button>
             </div>
           </motion.nav>
         ) : null}

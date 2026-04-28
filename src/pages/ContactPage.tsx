@@ -1,87 +1,141 @@
-import { Mail, MapPin, Phone } from "lucide-react";
-import { FormEvent, useState } from "react";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionIntro } from "@/components/ui/SectionIntro";
-import { socialLinks } from "@/data/siteContent";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Check } from "lucide-react";
+import { useMode } from "@/hooks/useMode";
+import { useCases } from "@/data/siteContent";
 
 export function ContactPage() {
+  const { mode } = useMode();
+  const isFoundation = mode === "foundation";
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setSubmitted(true);
   };
 
   return (
-    <div className="mx-auto grid w-full max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6 md:py-20">
-      <Reveal>
-        <div className="space-y-8">
-          <SectionIntro
-            eyebrow="Contact"
-            title="Let us build with you"
-            description="Reach out to get active in the Swarm Economy, collaborate on collective action, or discuss pathways for fulfilling opportunities."
-          />
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+    >
+      <div className="ph">
+        <div className="ph-i">
+          <p className="eyebrow ey-l">{isFoundation ? "Let's talk" : "Submit a request"}</p>
+          <h1 className="pt">{isFoundation ? "Get in touch" : "Tell us what you need"}</h1>
+          <p className="ps">
+            {isFoundation
+              ? "Tell us what you're building. We'll find the right connection."
+              : "Hiring, partners, or expansion — tell us what you need and we'll match you within 48 hours."}
+          </p>
+        </div>
+      </div>
 
-          <div className="space-y-3 text-zinc-600 dark:text-zinc-300">
-            <p className="flex items-center gap-3">
-              <Mail className="h-4 w-4 text-blue-500" /> info@chambey.org
-            </p>
-            <p className="flex items-center gap-3">
-              <MapPin className="h-4 w-4 text-blue-500" /> Global community
-            </p>
-          </div>
+      <section className="sec s-cream">
+        <div className="si">
+          <div className="split">
+            <div>
+              <h2 className="sec-title" style={{ marginBottom: "1.2rem" }}>
+                {isFoundation ? "Start a conversation" : "How it works"}
+              </h2>
+              <p className="sec-desc" style={{ marginBottom: "1.75rem" }}>
+                {isFoundation
+                  ? "Whether you're a developer, a supplier, a founder, or an investor — Chambey is built for people who build."
+                  : "Submit your request. We match you within 48 hours. Mulacanoe coordinates any payments needed to close the deal."}
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}>
+                {useCases.map((useCase, i) => {
+                  const Icon = useCase.icon;
+                  return (
+                    <div
+                      key={i}
+                      style={{ display: "flex", alignItems: "center", gap: 11, color: "var(--mid)", fontSize: "14.5px", fontWeight: 300 }}
+                    >
+                      <span style={{ color: isFoundation ? "var(--cobalt)" : "var(--salmon)" }}>
+                        <Icon width={15} height={15} />
+                      </span>
+                      {useCase.text}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
 
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-zinc-700 transition-colors hover:text-blue-500 dark:text-zinc-300"
+            {!submitted ? (
+              <form
+                className={`card ${isFoundation ? "card-f" : "card-c"}`}
+                onSubmit={handleSubmit}
+                style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}
               >
-                <social.icon className="h-5 w-5" />
-              </a>
-            ))}
+                <input
+                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  placeholder="Your name"
+                  required
+                />
+                <input
+                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  type="email"
+                  placeholder="Email address"
+                  required
+                />
+                <input
+                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  placeholder="Organisation (optional)"
+                />
+                <textarea
+                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  placeholder={
+                    isFoundation
+                      ? "What are you building? What do you need?"
+                      : "What do you need: hiring, trade partners, or expansion?"
+                  }
+                  required
+                />
+                <button
+                  type="submit"
+                  className={isFoundation ? "btn btn-co" : "btn btn-sa"}
+                  style={{ alignSelf: "flex-start" }}
+                >
+                  {isFoundation ? "Send message" : "Submit request"} <ArrowRight width={14} height={14} />
+                </button>
+              </form>
+            ) : (
+              <div className="card" style={{ textAlign: "center", padding: "3rem 2rem" }}>
+                <div
+                  style={{
+                    width: 46,
+                    height: 46,
+                    borderRadius: "50%",
+                    background: "rgba(0,150,121,0.12)",
+                    color: "var(--tealD)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 1.2rem",
+                  }}
+                >
+                  <Check width={22} height={22} />
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--serif)",
+                    fontSize: 21,
+                    color: "var(--navy)",
+                    marginBottom: "0.65rem",
+                    fontWeight: 300,
+                  }}
+                >
+                  {isFoundation ? "Message received" : "Request submitted"}
+                </div>
+                <p style={{ color: "var(--mid)", fontSize: "14.5px", fontWeight: 300 }}>
+                  We'll be in touch within 2 business days.
+                </p>
+              </div>
+            )}
           </div>
         </div>
-      </Reveal>
-
-      <Reveal delay={0.12}>
-        <form onSubmit={handleSubmit} className="space-y-4 border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950">
-          <label className="block space-y-2">
-            <span className="text-sm text-zinc-600 dark:text-zinc-300">Full Name</span>
-            <input
-              type="text"
-              required
-              className="w-full border border-zinc-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-black"
-            />
-          </label>
-          <label className="block space-y-2">
-            <span className="text-sm text-zinc-600 dark:text-zinc-300">Email</span>
-            <input
-              type="email"
-              required
-              className="w-full border border-zinc-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-black"
-            />
-          </label>
-          <label className="block space-y-2">
-            <span className="text-sm text-zinc-600 dark:text-zinc-300">Message</span>
-            <textarea
-              required
-              rows={4}
-              className="w-full border border-zinc-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-black"
-            />
-          </label>
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center bg-blue-500 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-400"
-          >
-            Send Message
-          </button>
-          {submitted ? <p className="text-sm text-blue-500">Thanks for reaching out. We will contact you shortly.</p> : null}
-        </form>
-      </Reveal>
-    </div>
+      </section>
+    </motion.div>
   );
 }

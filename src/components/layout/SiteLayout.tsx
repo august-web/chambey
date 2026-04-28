@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
+import { ModeSwitcher } from "@/components/layout/ModeSwitcher";
 import { Navbar } from "@/components/layout/Navbar";
 
 export function SiteLayout() {
   return (
-    <div className="min-h-screen bg-white text-zinc-950 dark:bg-black dark:text-zinc-100">
+    <div className="min-h-screen" style={{ background: "var(--cream)", color: "var(--navy)" }}>
       <Navbar />
       <motion.main
         initial={{ opacity: 0, y: 12 }}
@@ -16,6 +17,7 @@ export function SiteLayout() {
         <Outlet />
       </motion.main>
       <Footer />
+      <ModeSwitcher />
     </div>
   );
 }
