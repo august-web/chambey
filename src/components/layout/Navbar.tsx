@@ -33,7 +33,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="nav-links">
+        <nav className="nav-links hidden md:flex">
           {navItems.map((item) => (
             <button
               key={item.href}
@@ -54,18 +54,24 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <button
-            className={cn("nav-cta", isFoundation ? "nav-cta-f" : "nav-cta-c")}
+            className={cn("nav-cta hidden md:flex", isFoundation ? "nav-cta-f" : "nav-cta-c")}
             onClick={() => handleNavClick("/contact")}
           >
             {isFoundation ? "Join network" : "Start request"}
           </button>
           <button
             type="button"
-            className="nav-toggle"
+            className="nav-toggle md:hidden"
             onClick={() => setIsOpen((current) => !current)}
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+          <button
+            className={cn("nav-cta md:hidden", isFoundation ? "nav-cta-f" : "nav-cta-c")}
+            onClick={() => handleNavClick("/contact")}
+          >
+            {isFoundation ? "Join" : "Start"}
           </button>
         </div>
       </div>
