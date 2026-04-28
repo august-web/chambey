@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type ThemeMode = "dark" | "light";
 
-const STORAGE_KEY = "techcrew-theme";
+const STORAGE_KEY = "chambey-theme";
 
 export function useTheme() {
   const [theme, setTheme] = useState<ThemeMode>(() => {
