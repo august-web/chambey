@@ -61,7 +61,7 @@ export function Navbar() {
           </button>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center text-zinc-700 dark:text-zinc-300 md:hidden"
+            className="nav-toggle"
             onClick={() => setIsOpen((current) => !current)}
             aria-label="Toggle menu"
           >
@@ -77,7 +77,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-zinc-200/70 bg-white px-4 pb-4 pt-2 dark:border-zinc-800 dark:bg-black md:hidden"
+            className="nav-mobile-menu"
           >
             <div className="flex flex-col gap-3">
               {navItems.map((item) => (

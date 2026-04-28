@@ -209,6 +209,29 @@ img {
   color: var(--cream);
 }
 
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  color: var(--navy);
+}
+
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+.nav-toggle:hover {
+  background: rgba(8,48,73,0.07);
+}
+
 .nav-cta {
   padding: 8px 20px;
   border-radius: 9px;
@@ -645,8 +668,21 @@ img {
   .nav-links {
     display: none;
   }
+  .nav-toggle {
+    display: flex;
+  }
   .hero-stats {
     flex-direction: column;
+    border-left: 1px solid rgba(171,205,214,0.1);
+    border-top: 1px solid rgba(171,205,214,0.1);
+    border-radius: 12px;
+  }
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(171,205,214,0.1);
+  }
+  .stat:last-child {
+    border-bottom: none;
   }
 }
 
@@ -1559,8 +1595,20 @@ textarea.field {
   margin-top: 26px;
 }
 
+/* Mobile Menu */
+.nav-mobile-menu {
+  overflow: hidden;
+  border-top: 1px solid rgba(8,48,73,0.1);
+  background: var(--cream);
+  padding: 0.5rem 1rem 1rem;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  :root {
+    --max: 100%;
+  }
+  
   .mode-switcher {
     bottom: 16px;
     right: 16px;
@@ -1577,11 +1625,36 @@ textarea.field {
   }
   
   .hero-inner {
-    padding: 5rem 1rem 3rem;
+    padding: 4rem 1rem 2.5rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+  
+  .hero-sub {
+    font-size: 1rem;
+  }
+  
+  .hero-btns {
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 10px 18px;
+    font-size: 13px;
   }
   
   .sec {
     padding: 3rem 1rem;
+  }
+  
+  .sec-title {
+    font-size: 1.65rem;
+  }
+  
+  .sec-desc {
+    font-size: 15px;
   }
   
   .steps {
@@ -1596,11 +1669,50 @@ textarea.field {
     grid-template-columns: 1fr;
   }
   
+  .split {
+    gap: 2.5rem;
+  }
+  
+  .don-inner {
+    padding: 5rem 1rem 3rem;
+  }
+  
+  .don-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+  
   .don-flow {
     flex-direction: column;
   }
   
   .don-flow-arrow {
     transform: rotate(90deg);
+  }
+  
+  .don-loop {
+    gap: 1.5rem;
+  }
+  
+  .ft {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .flinks {
+    justify-content: center;
+  }
+  
+  .fb {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .mula-strip {
+    padding: 1rem;
+  }
+  
+  .mula-inner {
+    justify-content: center;
+    text-align: center;
   }
 }
