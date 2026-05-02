@@ -5,7 +5,7 @@ import { impactAreas } from "@/data/siteContent";
 
 export function FieldsPage() {
   const { mode } = useMode();
-  const isFoundation = mode === "foundation";
+  const isOrganization = mode === "Organization";
 
   return (
     <motion.div
@@ -15,10 +15,10 @@ export function FieldsPage() {
     >
       <div className="ph">
         <div className="ph-i">
-          <p className="eyebrow ey-l">{isFoundation ? "Impact areas" : "Active sectors"}</p>
-          <h1 className="pt">{isFoundation ? "Where collaboration creates impact" : "Where deals are moving"}</h1>
+          <p className="eyebrow ey-l">{isOrganization ? "Impact areas" : "Active sectors"}</p>
+          <h1 className="pt">{isOrganization ? "Where collaboration creates impact" : "Where deals are moving"}</h1>
           <p className="ps">
-            {isFoundation
+            {isOrganization
               ? "The sectors where cross-border work moves fastest."
               : "The sectors with the most live activity across our corridors."}
           </p>
@@ -35,10 +35,10 @@ export function FieldsPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: i * 0.1 }}
-                className={`card ${isFoundation ? "card-f" : "card-c"}`}
+                className={`card ${isOrganization ? "card-f" : "card-c"}`}
                 style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: "1.5rem", alignItems: "center" }}
               >
-                <div className={`c-icon ${isFoundation ? "ci-co" : "ci-sa"}`} style={{ margin: 0 }}>
+                <div className={`c-icon ${isOrganization ? "ci-co" : "ci-sa"}`} style={{ margin: 0 }}>
                   <Icon width={17} height={17} />
                 </div>
                 <div>

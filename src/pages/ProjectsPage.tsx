@@ -6,12 +6,10 @@ import { useMode } from "@/hooks/useMode";
 export function ProjectsPage() {
   const navigate = useNavigate();
   const { mode } = useMode();
-  const isFoundation = mode === "foundation";
+  const isOrganization = mode === "Organization";
 
   const statusClass: Record<string, string> = {
-    Active: "ba",
-    Completed: "bd",
-    "In progress": "bpg",
+    Planning: "bpg",
   };
 
   return (
@@ -28,12 +26,12 @@ export function ProjectsPage() {
         </div>
       </div>
 
-      {!isFoundation && (
+      {!isOrganization && (
         <div className="mula-strip">
           <div className="mula-inner">
             <span className="badge bm">Mulacanoe</span>
             <p className="mula-text">
-              <strong>Payments, escrow, and transaction coordination</strong> powered by Mulacanoe — every deal in this list settled through our transaction layer.
+              <strong>Payments, escrow, and transaction coordination</strong> powered by Mulacanoe — every deal in this list is coordinated through our transaction layer.
             </p>
           </div>
         </div>
@@ -48,15 +46,15 @@ export function ProjectsPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: index * 0.1 }}
-                className={`card ${isFoundation ? "card-f" : "card-c"}`}
+                className={`card ${isOrganization ? "card-f" : "card-c"}`}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.7rem" }}>
                   <div>
                     <div style={{ fontSize: 16, fontWeight: 500, color: "var(--navy)", marginBottom: 5 }}>
-                      {project.from} <span style={{ color: isFoundation ? "var(--cobalt)" : "var(--salmon)" }}>→</span> {project.to}
+                      {project.from} <span style={{ color: isOrganization ? "var(--cobalt)" : "var(--salmon)" }}>→</span> {project.to}
                     </div>
-                    <span className={`tag ${isFoundation ? "" : "tag-sa"}`}>
-                      {isFoundation ? project.typeF : project.typeC}
+                    <span className={`tag ${isOrganization ? "" : "tag-sa"}`}>
+                      {isOrganization ? project.typeF : project.typeC}
                     </span>
                   </div>
                   <span className={`badge ${statusClass[project.status]}`}>{project.status}</span>
@@ -66,7 +64,7 @@ export function ProjectsPage() {
             ))}
           </div>
 
-          {isFoundation && (
+          {isOrganization && (
             <div style={{ marginTop: "1.75rem", display: "flex", alignItems: "center", gap: 8, fontSize: "12.5px", color: "var(--mid)" }}>
               <span className="badge bm">Mulacanoe</span> Payments and escrow coordinated through Mulacanoe
             </div>

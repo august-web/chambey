@@ -1,22 +1,27 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "@/utils/cn";
 import { navItems } from "@/data/siteContent";
 import { useMode } from "@/hooks/useMode";
+import { openLitanyHandoff } from "@/utils/litany";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const { mode, setMode } = useMode();
+  const { mode } = useMode();
 
   const handleNavClick = (href: string) => {
     navigate(href);
     setIsOpen(false);
   };
 
-  const isFoundation = mode === "foundation";
+  const isOrganization = mode === "Organization";
+  const handleJoinClick = () => {
+    openLitanyHandoff({ intent: "user", campaign: "navbar" });
+    setIsOpen(false);
+  };
 
   return (
     <motion.header
@@ -27,9 +32,10 @@ export function Navbar() {
     >
       <div className="nav-inner">
         <Link to="/" className="nav-logo" onClick={() => handleNavClick("/")}>
-          Cham<span className="co">bey</span>
-          <span className={cn("nav-badge", isFoundation ? "badge-f" : "badge-c")}>
-            {isFoundation ? "Foundation" : "Corridors"}
+          <img src="/favicon.png" alt="" className="nav-logo-mark" />
+          <span>CHAMBEY</span>
+          <span className={cn("nav-badge", isOrganization ? "badge-f" : "badge-c")}>
+            {isOrganization ? "Organization" : "Corridors"}
           </span>
         </Link>
 
@@ -43,21 +49,14 @@ export function Navbar() {
               {item.label}
             </button>
           ))}
-          <button
-            className="nav-link"
-            style={{ color: "var(--tealD)", fontWeight: 500 }}
-            onClick={() => handleNavClick("/support")}
-          >
-            Support
-          </button>
         </nav>
 
         <div className="flex items-center gap-3">
           <button
-            className={cn("nav-cta hidden md:flex", isFoundation ? "nav-cta-f" : "nav-cta-c")}
-            onClick={() => handleNavClick("/contact")}
+            className={cn("nav-cta hidden md:flex", isOrganization ? "nav-cta-f" : "nav-cta-c")}
+            onClick={isOrganization ? handleJoinClick : () => handleNavClick("/contact")}
           >
-            {isFoundation ? "Join network" : "Start request"}
+            {isOrganization ? "Join network" : "Start request"}
           </button>
           <button
             type="button"
@@ -68,10 +67,10 @@ export function Navbar() {
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
           <button
-            className={cn("nav-cta md:hidden", isFoundation ? "nav-cta-f" : "nav-cta-c")}
-            onClick={() => handleNavClick("/contact")}
+            className={cn("nav-cta md:hidden", isOrganization ? "nav-cta-f" : "nav-cta-c")}
+            onClick={isOrganization ? handleJoinClick : () => handleNavClick("/contact")}
           >
-            {isFoundation ? "Join" : "Start"}
+            {isOrganization ? "Join" : "Start"}
           </button>
         </div>
       </div>
@@ -95,13 +94,6 @@ export function Navbar() {
                   {item.label}
                 </button>
               ))}
-              <button
-                className="py-1 text-sm font-medium"
-                style={{ color: "var(--tealD)" }}
-                onClick={() => handleNavClick("/support")}
-              >
-                Support
-              </button>
             </div>
           </motion.nav>
         ) : null}

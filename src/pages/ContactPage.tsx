@@ -6,7 +6,7 @@ import { useCases } from "@/data/siteContent";
 
 export function ContactPage() {
   const { mode } = useMode();
-  const isFoundation = mode === "foundation";
+  const isOrganization = mode === "Organization";
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,12 +22,12 @@ export function ContactPage() {
     >
       <div className="ph">
         <div className="ph-i">
-          <p className="eyebrow ey-l">{isFoundation ? "Let's talk" : "Submit a request"}</p>
-          <h1 className="pt">{isFoundation ? "Get in touch" : "Tell us what you need"}</h1>
+          <p className="eyebrow ey-l">{isOrganization ? "Let's talk" : "Submit a request"}</p>
+          <h1 className="pt">{isOrganization ? "Get in touch" : "Tell us what you need"}</h1>
           <p className="ps">
-            {isFoundation
+            {isOrganization
               ? "Tell us what you're building. We'll find the right connection."
-              : "Hiring, partners, or expansion — tell us what you need and we'll match you within 48 hours."}
+              : "Hiring, partners, or expansion, tell us what you need and we'll connect you."}
           </p>
         </div>
       </div>
@@ -37,12 +37,12 @@ export function ContactPage() {
           <div className="split">
             <div>
               <h2 className="sec-title" style={{ marginBottom: "1.2rem" }}>
-                {isFoundation ? "Start a conversation" : "How it works"}
+                {isOrganization ? "Start a conversation" : "How it works"}
               </h2>
               <p className="sec-desc" style={{ marginBottom: "1.75rem" }}>
-                {isFoundation
+                {isOrganization
                   ? "Whether you're a developer, a supplier, a founder, or an investor — Chambey is built for people who build."
-                  : "Submit your request. We match you within 48 hours. Mulacanoe coordinates any payments needed to close the deal."}
+                  : "Submit your request. We connect you. Mulacanoe coordinates any payments needed to close the deal."}
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}>
                 {useCases.map((useCase, i) => {
@@ -52,7 +52,7 @@ export function ContactPage() {
                       key={i}
                       style={{ display: "flex", alignItems: "center", gap: 11, color: "var(--mid)", fontSize: "14.5px", fontWeight: 300 }}
                     >
-                      <span style={{ color: isFoundation ? "var(--cobalt)" : "var(--salmon)" }}>
+                      <span style={{ color: isOrganization ? "var(--cobalt)" : "var(--salmon)" }}>
                         <Icon width={15} height={15} />
                       </span>
                       {useCase.text}
@@ -64,29 +64,29 @@ export function ContactPage() {
 
             {!submitted ? (
               <form
-                className={`card ${isFoundation ? "card-f" : "card-c"}`}
+                className={`card ${isOrganization ? "card-f" : "card-c"}`}
                 onSubmit={handleSubmit}
                 style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}
               >
                 <input
-                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  className={`field ${isOrganization ? "field-f" : "field-c"}`}
                   placeholder="Your name"
                   required
                 />
                 <input
-                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  className={`field ${isOrganization ? "field-f" : "field-c"}`}
                   type="email"
                   placeholder="Email address"
                   required
                 />
                 <input
-                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  className={`field ${isOrganization ? "field-f" : "field-c"}`}
                   placeholder="Organisation (optional)"
                 />
                 <textarea
-                  className={`field ${isFoundation ? "field-f" : "field-c"}`}
+                  className={`field ${isOrganization ? "field-f" : "field-c"}`}
                   placeholder={
-                    isFoundation
+                    isOrganization
                       ? "What are you building? What do you need?"
                       : "What do you need: hiring, trade partners, or expansion?"
                   }
@@ -94,10 +94,10 @@ export function ContactPage() {
                 />
                 <button
                   type="submit"
-                  className={isFoundation ? "btn btn-co" : "btn btn-sa"}
+                  className={isOrganization ? "btn btn-co" : "btn btn-sa"}
                   style={{ alignSelf: "flex-start" }}
                 >
-                  {isFoundation ? "Send message" : "Submit request"} <ArrowRight width={14} height={14} />
+                  {isOrganization ? "Send message" : "Submit request"} <ArrowRight width={14} height={14} />
                 </button>
               </form>
             ) : (
@@ -126,7 +126,7 @@ export function ContactPage() {
                     fontWeight: 300,
                   }}
                 >
-                  {isFoundation ? "Message received" : "Request submitted"}
+                  {isOrganization ? "Message received" : "Request submitted"}
                 </div>
                 <p style={{ color: "var(--mid)", fontSize: "14.5px", fontWeight: 300 }}>
                   We'll be in touch within 2 business days.

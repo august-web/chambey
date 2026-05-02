@@ -13,10 +13,10 @@ export function ModeSwitcher() {
     >
       <span className="sw-label">Mode</span>
       <button
-        className={`sw-btn ${mode === "foundation" ? "sw-active" : ""}`}
-        onClick={() => setMode("foundation")}
+        className={`sw-btn ${mode === "Organization" ? "sw-active" : ""}`}
+        onClick={() => setMode("Organization")}
       >
-        Foundation
+        Organization
       </button>
       <button
         className={`sw-btn ${mode === "corridors" ? "sw-active" : ""}`}

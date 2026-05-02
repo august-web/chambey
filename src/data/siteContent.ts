@@ -37,10 +37,10 @@ export type SocialLink = {
 export type Field = {
   from: string;
   to: string;
-  type: "Collaboration outcome" | "Trade collaboration";
-  category: "Hiring" | "Trade deal" | "Partnership";
+  typeF: "Collaboration outcome" | "Trade collaboration";
+  typeC: "Hiring" | "Trade deal" | "Partnership";
   description: string;
-  status: "Active" | "Completed" | "In progress";
+  status: "Planning";
 };
 
 export type TeamDomain = {
@@ -85,7 +85,6 @@ export const navItems: NavItem[] = [
   { label: "Fields", href: "/fields" },
   { label: "Projects", href: "/projects" },
   { label: "Contact", href: "/contact" },
-  { label: "Support", href: "/support" },
 ];
 
 export const corridors: Corridor[] = [
@@ -104,7 +103,7 @@ export const projects: Field[] = [
     typeF: "Collaboration outcome",
     typeC: "Hiring",
     description: "Backend developer hired by a fintech startup. 3-month contract, extended to full-time.",
-    status: "Active",
+    status: "Planning",
   },
   {
     from: "Ghana",
@@ -112,7 +111,7 @@ export const projects: Field[] = [
     typeF: "Trade collaboration",
     typeC: "Trade deal",
     description: "Agricultural supplier connected with a food distributor. First shipment cleared.",
-    status: "Completed",
+    status: "Planning",
   },
   {
     from: "Indonesia",
@@ -120,7 +119,7 @@ export const projects: Field[] = [
     typeF: "Collaboration outcome",
     typeC: "Partnership",
     description: "Digital agency partnered with a Lagos startup to build their mobile product.",
-    status: "Active",
+    status: "Planning",
   },
   {
     from: "Kenya",
@@ -128,7 +127,7 @@ export const projects: Field[] = [
     typeF: "Collaboration outcome",
     typeC: "Partnership",
     description: "SaaS company expanding distribution through a SE Asia reseller network.",
-    status: "In progress",
+    status: "Planning",
   },
   {
     from: "Brazil",
@@ -136,7 +135,7 @@ export const projects: Field[] = [
     typeF: "Trade collaboration",
     typeC: "Trade deal",
     description: "Consumer goods manufacturer entering West African markets through a local distributor.",
-    status: "In progress",
+    status: "Planning",
   },
   {
     from: "Philippines",
@@ -144,7 +143,7 @@ export const projects: Field[] = [
     typeF: "Collaboration outcome",
     typeC: "Hiring",
     description: "Design team engaged by a fast-growing media company to build their brand identity.",
-    status: "Active",
+    status: "Planning",
   },
 ];
 
@@ -157,7 +156,7 @@ export const teamDomains: TeamDomain[] = [
   },
   {
     title: "Trade & Business",
-    description: "Linking suppliers and buyers across Africa, Brazil, and Southeast Asia.",
+    description: "Linking suppliers and buyers across Africa, Brazil, Southeast Asia, and Emerging Domestic Markets.",
     tags: ["B2B trade", "Supplier matching", "Verified buyers"],
     icon: Briefcase,
   },
@@ -209,7 +208,7 @@ export const donationTiers: DonationTier[] = [
     label: "Partner",
     monthly: "$100 – $500",
     oneTime: "$500 – $2,500",
-    description: "Builders, operators, and small organizations supporting cross-border collaboration.",
+    description: "Builders, operators, and small Organizations supporting cross-border collaboration.",
     benefits: [
       "Priority access to network initiatives",
       "Visibility across Chambey community",
@@ -224,7 +223,7 @@ export const donationTiers: DonationTier[] = [
     label: "Sponsor",
     monthly: "$5,000+",
     oneTime: "$25,000+",
-    description: "Institutions, funds, and organizations supporting ecosystem growth across regions.",
+    description: "Institutions, funds, and Organizations supporting ecosystem growth across regions.",
     benefits: [
       "Strategic collaboration opportunities",
       "Visibility across all Chambey surfaces",
@@ -273,7 +272,7 @@ export const fundingUses = [
   },
   {
     title: "Regional expansion",
-    description: "Extending Chambey into new corridors, new markets, and new communities across the Global South — widening access to the ecosystem.",
+    description: "Extending Chambey into new corridors, new markets, and new communities across the Global Emerging Domestic Markets, and the Global South, widening access to the ecosystem.",
     icon: Globe,
   },
 ];
@@ -286,4 +285,4 @@ export const socialLinks = [
 ];
 
 export const quoteText =
-  "For people who don't wait for permission. Who think globally — even when starting locally. Who build beyond borders.";
+  "For people who don't wait for permission. Who think globally, even when starting locally. Who build beyond borders.";

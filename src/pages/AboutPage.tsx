@@ -7,7 +7,7 @@ import { ecosystemLayers } from "@/data/siteContent";
 export function AboutPage() {
   const navigate = useNavigate();
   const { mode } = useMode();
-  const isFoundation = mode === "foundation";
+  const isOrganization = mode === "Organization";
 
   const handleNavClick = (href: string) => {
     navigate(href);
@@ -21,9 +21,9 @@ export function AboutPage() {
     >
       <div className="ph">
         <div className="ph-i">
-          <p className="eyebrow ey-l">{isFoundation ? "Our story" : "What we do"}</p>
-          <h1 className="pt">{isFoundation ? "Why Chambey exists" : "Operate across borders"}</h1>
-          <p className="ps">{isFoundation ? "Talent is everywhere. Opportunity is not." : "Chambey Corridors helps you execute across regions with trusted connections."}</p>
+          <p className="eyebrow ey-l">{isOrganization ? "Our story" : "What we do"}</p>
+          <h1 className="pt">{isOrganization ? "Why Chambey exists" : "Operate across borders"}</h1>
+          <p className="ps">{isOrganization ? "Talent is everywhere. Opportunity is not." : "Chambey Corridors helps you execute across regions with trusted connections."}</p>
         </div>
       </div>
 
@@ -32,18 +32,18 @@ export function AboutPage() {
           <div className="split">
             <div>
               <h2 className="sec-title" style={{ marginBottom: "1.4rem" }}>
-                {isFoundation ? "The problem we solve" : "How we work"}
+                {isOrganization ? "The problem we solve" : "How we work"}
               </h2>
               <p className="sec-desc" style={{ marginBottom: "1.2rem" }}>
-                {isFoundation
-                  ? "A developer in Lagos has the same skills as one in Jakarta — but unequal access to global markets, clients, and capital. A supplier in Accra is building great products with no path to buyers in São Paulo."
-                  : "You tell us what you need. We match you to vetted talent, partners, or trade opportunities across Africa, Brazil, and Southeast Asia. Mulacanoe handles the payments so deals actually close."}
+                {isOrganization
+                  ? "A developer in Lagos has the same skills as one in Jakarta, but unequal access to global markets, clients, and capital. A supplier in Accra is building great products with no path to buyers in São Paulo."
+                  : "You tell us what you need. We match you to vetted talent, partners, or trade opportunities across Emerging Domestic Markets, Africa, Brazil, and Southeast Asia. Mulacanoe handles payment so deals actually close."}
               </p>
-              <p className="sec-desc" style={{ marginBottom: "1.75rem" }}>
-                {isFoundation
-                  ? "Chambey connects people across regions so that collaboration leads to real economic outcomes — not just introductions."
-                  : "Every request becomes a live opportunity in our network. You get matched, you execute, and you get paid — or pay — without friction."}
-              </p>
+              {isOrganization && (
+                <p className="sec-desc" style={{ marginBottom: "1.75rem" }}>
+                  Chambey connects people across regions so that collaboration leads to real economic outcomes, not just introductions.
+                </p>
+              )}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <span className="tag" style={{ background: "rgba(6,110,178,0.1)", color: "var(--cobalt)", fontSize: 12, padding: "5px 13px" }}>
                   Africa
@@ -57,40 +57,40 @@ export function AboutPage() {
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <div className={`card ${isFoundation ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+              <div className={`card ${isOrganization ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                 <div className="c-icon ci-co" style={{ margin: 0 }}>
                   <Globe width={17} height={17} />
                 </div>
                 <div>
-                  <div className="c-title">{isFoundation ? "Cross-border by design" : "Vetted connections only"}</div>
+                  <div className="c-title">{isOrganization ? "Cross-border by design" : "Vetted connections only"}</div>
                   <div className="c-body">
-                    {isFoundation
+                    {isOrganization
                       ? "Built for the regions driving the next wave of global growth."
                       : "Every talent, partner, and supplier in Corridors is reviewed before entering the network."}
                   </div>
                 </div>
               </div>
-              <div className={`card ${isFoundation ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+              <div className={`card ${isOrganization ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                 <div className="c-icon ci-sa" style={{ margin: 0 }}>
                   <Lightbulb width={17} height={17} />
                 </div>
                 <div>
-                  <div className="c-title">{isFoundation ? "Outcomes, not just networks" : "Deals that actually close"}</div>
+                  <div className="c-title">{isOrganization ? "Outcomes, not just networks" : "Deals that actually close"}</div>
                   <div className="c-body">
-                    {isFoundation
+                    {isOrganization
                       ? "Every connection in Chambey is oriented toward a deal, a hire, or a partnership."
                       : "Escrow, payment rails, and settlement built into every cross-border transaction."}
                   </div>
                 </div>
               </div>
-              <div className={`card ${isFoundation ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+              <div className={`card ${isOrganization ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                 <div className="c-icon ci-te" style={{ margin: 0 }}>
                   <Link width={17} height={17} />
                 </div>
                 <div>
-                  <div className="c-title">{isFoundation ? "Integrated infrastructure" : "Full transaction coordination"}</div>
+                  <div className="c-title">{isOrganization ? "Integrated infrastructure" : "Full transaction coordination"}</div>
                   <div className="c-body">
-                    {isFoundation
+                    {isOrganization
                       ? "Litany for clarity. Mulacanoe for payments. Chambey for coordination."
                       : "Mulacanoe handles payments, escrow, and settlement so you don't have to."}
                   </div>

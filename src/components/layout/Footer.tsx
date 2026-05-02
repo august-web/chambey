@@ -1,10 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
-import { navItems, socialLinks } from "@/data/siteContent";
-import { useMode } from "@/hooks/useMode";
+import { useNavigate } from "react-router-dom";
+import { navItems } from "@/data/siteContent";
 
 export function Footer() {
   const navigate = useNavigate();
-  const { setMode } = useMode();
 
   const handleNavClick = (href: string) => {
     navigate(href);
@@ -15,7 +13,8 @@ export function Footer() {
       <div className="fi">
         <div className="ft">
           <div className="flogo">
-            Cham<span className="co">bey</span>
+            <img src="/favicon.png" alt="" className="flogo-mark" />
+            <span>CHAMBEY</span>
           </div>
           <div className="flinks">
             {navItems.map((item) => (
@@ -27,13 +26,6 @@ export function Footer() {
                 {item.label}
               </button>
             ))}
-            <button
-              className="flink"
-              style={{ color: "var(--tealD)" }}
-              onClick={() => handleNavClick("/support")}
-            >
-              Support
-            </button>
           </div>
         </div>
         <div className="fb">

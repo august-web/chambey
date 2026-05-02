@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type Mode = "foundation" | "corridors";
+type Mode = "Organization" | "corridors";
 
 interface ModeState {
   mode: Mode;
@@ -8,6 +8,6 @@ interface ModeState {
 }
 
 export const useMode = create<ModeState>((set) => ({
-  mode: "foundation",
+  mode: "Organization",
   setMode: (mode) => set({ mode }),
 }));

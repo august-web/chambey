@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, DollarSign, Globe, Group, Handshake, Loader, Users } from "lucide-react";
-import { donationTiers, fundingUses, useCases } from "@/data/siteContent";
-import { useMode } from "@/hooks/useMode";
+import { donationTiers, fundingUses } from "@/data/siteContent";
 import { cn } from "@/utils/cn";
 
 export function SupportPage() {
-  const { mode } = useMode();
-  const isFoundation = mode === "foundation";
   const [freq, setFreq] = useState<"monthly" | "onetime">("monthly");
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
 
@@ -38,13 +35,13 @@ export function SupportPage() {
         <div className="don-orb don-orb-2"></div>
         <div className="don-inner">
           <p className="eyebrow ey-l" style={{ justifyContent: "center", marginBottom: "1.25rem" }}>
-            Chambey Foundation
+            Chambey Organization
           </p>
           <h1 className="don-title">
             Support cross-border<br />opportunity
           </h1>
           <p className="don-sub">
-            Help connect talent, ideas, and opportunities across Africa, Brazil, and Southeast Asia.
+            Help connect talent, ideas, and opportunities across Global Emerging Domestic Markets, Africa, Brazil, and Southeast Asia.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: "2rem" }}>
             <button className="btn btn-teal" onClick={() => document.getElementById("don-tiers")?.scrollIntoView({ behavior: "smooth" })}>
@@ -68,7 +65,7 @@ export function SupportPage() {
                 Talent is everywhere.<br />Opportunity is not.
               </h2>
               <p className="sec-desc" style={{ marginBottom: "1.25rem" }}>
-                Across the Global South, people are building, creating, and solving problems — but access to opportunity is often limited by geography.
+                People are building, creating, and solving problems, but access to opportunities is often limited to geography.
               </p>
               <p className="sec-desc" style={{ marginBottom: "1.25rem" }}>
                 Chambey exists to change that. We connect people across regions so collaboration leads to real-world outcomes.
@@ -87,7 +84,7 @@ export function SupportPage() {
                 {[
                   "Expand access to cross-border collaboration",
                   "Connect individuals to opportunities beyond their environment",
-                  "Enable partnerships across Africa, Brazil, and Southeast Asia",
+                  "Enable partnerships across Global EDMs, Africa, Brazil, and SEA",
                   "Build infrastructure for long-term economic mobility",
                 ].map((item, i) => (
                   <div key={i} className="don-check-row">
@@ -136,7 +133,7 @@ export function SupportPage() {
             ))}
           </div>
           <p className="sec-desc light" style={{ margin: "2.5rem auto 0", maxWidth: "480px" }}>
-            Your support helps make that system accessible to more people — across regions, across borders, across opportunity gaps.
+            Your support helps make that system accessible to more people, across regions, across borders, across opportunity gaps.
           </p>
         </div>
       </section>
@@ -165,6 +162,21 @@ export function SupportPage() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: "2rem", textAlign: "center" }}>
+            <a
+              aria-label="Chambey Organization"
+              href="https://app.candid.org/profile/15510989/chambey-organization-99-2404801/?pkId=fce6856e-d617-42b3-8d0b-0ca7b53b451c"
+              target="_blank"
+              rel="noreferrer"
+              style={{ display: "inline-flex" }}
+            >
+              <img
+                alt=""
+                src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/15510989/svg"
+                style={{ width: 120, height: "auto" }}
+              />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -179,7 +191,7 @@ export function SupportPage() {
               Choose your level of involvement
             </h2>
             <p className="sec-desc" style={{ margin: "0 auto", textAlign: "center" }}>
-              Every level represents a different depth of participation — not a different size of transaction.
+              Every level represents a different depth of participation, not a different size of transaction.
             </p>
           </div>
 
@@ -319,7 +331,7 @@ export function SupportPage() {
             Help expand access to opportunity
           </h2>
           <p style={{ color: "rgba(255,255,255,0.72)", marginBottom: "2rem", fontWeight: 300, maxWidth: 380, margin: "0 auto" }}>
-            Be part of building infrastructure for opportunity across regions — not charity, infrastructure.
+            Be part of building infrastructure for opportunity across regions, not charity, infrastructure.
           </p>
           <button
             className="btn"

@@ -4,14 +4,19 @@ import { ArrowRight } from "lucide-react";
 import { useMode } from "@/hooks/useMode";
 import { quoteText } from "@/data/siteContent";
 import { corridors } from "@/data/siteContent";
+import { openLitanyHandoff } from "@/utils/litany";
 
 export function HomePage() {
   const navigate = useNavigate();
   const { mode, setMode } = useMode();
-  const isFoundation = mode === "foundation";
+  const isOrganization = mode === "Organization";
 
   const handleNavClick = (href: string) => {
     navigate(href);
+  };
+
+  const handleJoinNetwork = (campaign = "homepage") => {
+    openLitanyHandoff({ intent: "user", campaign });
   };
 
   return (
@@ -23,18 +28,18 @@ export function HomePage() {
       {/* Hero */}
       <section className="hero">
         <div className="hero-grid"></div>
-        <div className={`orb orb-1 ${isFoundation ? "orb-f-1" : "orb-c-1"}`}></div>
-        <div className={`orb orb-2 ${isFoundation ? "orb-f-2" : "orb-c-2"}`}></div>
-        <div className={`orb orb-3 ${isFoundation ? "orb-f-3" : "orb-c-3"}`}></div>
+        <div className={`orb orb-1 ${isOrganization ? "orb-f-1" : "orb-c-1"}`}></div>
+        <div className={`orb orb-2 ${isOrganization ? "orb-f-2" : "orb-c-2"}`}></div>
+        <div className={`orb orb-3 ${isOrganization ? "orb-f-3" : "orb-c-3"}`}></div>
         <div className="hero-inner">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className={`hero-eye ${isFoundation ? "eye-f" : "eye-c"}`}
+            className={`hero-eye ${isOrganization ? "eye-f" : "eye-c"}`}
           >
-            <span className={`eye-dot ${isFoundation ? "dot-f" : "dot-c"}`}></span>
-            <span>{isFoundation ? "Africa · Brazil · Southeast Asia" : "Hire · Trade · Partner"}</span>
+            <span className={`eye-dot ${isOrganization ? "dot-f" : "dot-c"}`}></span>
+            <span>{isOrganization ? "UNDERSERVED COMMUNITIES · EMERGING MARKETS · GLOBAL + LOCAL" : "Hire · Trade · Partner"}</span>
           </motion.div>
 
           <motion.h1
@@ -44,7 +49,7 @@ export function HomePage() {
             className="hero-title"
           >
             Build beyond<br />
-            your <em className={isFoundation ? "em-f" : "em-c"}>environment</em>
+            your <em className={isOrganization ? "em-f" : "em-c"}>circumstances</em>
           </motion.h1>
 
           <motion.p
@@ -53,9 +58,9 @@ export function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="hero-sub"
           >
-            {isFoundation
-              ? "A cross-border collaboration and innovation network connecting people, ideas, and opportunities across three of the world's most dynamic economies."
-              : "Hire talent, find partners, and execute deals across Africa, Brazil, and Southeast Asia — with payments handled end-to-end."}
+            {isOrganization
+              ? "A cross-border collaboration and innovation network that creates structured pathways to income, skills, and opportunity, connecting people, ideas, and markets to turn effort into real economic progress."
+              : "Hire talent, find partners, and execute deals across Africa, Brazil, Southeast Asia, and Emerging Domestic Markets, with payments handled end-to-end."}
           </motion.p>
 
           <motion.div
@@ -64,32 +69,12 @@ export function HomePage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="hero-btns"
           >
-            <button className={isFoundation ? "btn btn-co" : "btn btn-sa"} onClick={() => handleNavClick("/contact")}>
-              {isFoundation ? "Join the network" : "Start request"} <ArrowRight width={15} height={15} />
+            <button className={isOrganization ? "btn btn-co" : "btn btn-sa"} onClick={isOrganization ? () => handleJoinNetwork("homepage") : () => handleNavClick("/contact")}>
+              {isOrganization ? "Join the network" : "Start request"} <ArrowRight width={15} height={15} />
             </button>
             <button className="btn btn-ghost" onClick={() => handleNavClick("/about")}>
               See how it works
             </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="hero-stats"
-          >
-            <div className="stat">
-              <div className="stat-n">3</div>
-              <div className="stat-l">Regions</div>
-            </div>
-            <div className="stat">
-              <div className="stat-n">{isFoundation ? "50+" : "48h"}</div>
-              <div className="stat-l">{isFoundation ? "Collaborations" : "Match time"}</div>
-            </div>
-            <div className="stat">
-              <div className="stat-n">{isFoundation ? "∞" : "100%"}</div>
-              <div className="stat-l">{isFoundation ? "Corridors" : "Deals settled"}</div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -102,7 +87,7 @@ export function HomePage() {
       </div>
 
       {/* Mulacanoe Strip - Corridors only */}
-      {!isFoundation && (
+      {!isOrganization && (
         <div className="mula-strip">
           <div className="mula-inner">
             <span className="badge bm">Mulacanoe</span>
@@ -116,16 +101,16 @@ export function HomePage() {
       {/* How It Works */}
       <section className="sec s-surf">
         <div className="si">
-          <p className={`eyebrow ${isFoundation ? "ey-co" : "ey-sa"}`}>How it works</p>
+          <p className={`eyebrow ${isOrganization ? "ey-co" : "ey-sa"}`}>How it works</p>
           <h2 className="sec-title" style={{ marginBottom: "3.5rem" }}>
-            {isFoundation ? "Three steps to cross-border impact" : "From request to executed deal"}
+            {isOrganization ? "Three steps to cross-border impact" : "From request to executed deal"}
           </h2>
           <div className="steps">
             <div className="step">
-              <div className={`step-num ${isFoundation ? "sn-co" : "sn-co"}`}>1</div>
+              <div className={`step-num ${isOrganization ? "sn-co" : "sn-co"}`}>1</div>
               <div className="step-t">Clarify your path</div>
               <p className="step-d">
-                {isFoundation
+                {isOrganization
                   ? "Define what you're building and where you want to go."
                   : "Tell us what you need: talent, trade partners, or market expansion."}
               </p>
@@ -135,18 +120,18 @@ export function HomePage() {
             </div>
             <div className="step">
               <div className="step-num sn-nv">2</div>
-              <div className="step-t">{isFoundation ? "Connect with people across regions" : "Get matched — fast"}</div>
+              <div className="step-t">{isOrganization ? "Connect with people across regions" : "Get matched fast"}</div>
               <p className="step-d">
-                {isFoundation
+                {isOrganization
                   ? "Share ideas, skills, and opportunities with builders who think like you."
-                  : "We match you with vetted talent, partners, or trade opportunities within 48 hours."}
+                  : "We match you with vetted talent, partners, or trade opportunities."}
               </p>
             </div>
             <div className="step">
-              <div className={`step-num ${isFoundation ? "sn-te" : "sn-te"}`}>3</div>
-              <div className="step-t">{isFoundation ? "Turn collaboration into real outcomes" : "Execute across borders"}</div>
+              <div className={`step-num ${isOrganization ? "sn-te" : "sn-te"}`}>3</div>
+              <div className="step-t">{isOrganization ? "Turn collaboration into real outcomes" : "Execute across borders"}</div>
               <p className="step-d">
-                {isFoundation
+                {isOrganization
                   ? "From conversation to contract — real economic results across borders."
                   : "Close deals, hire talent, and execute transactions — Mulacanoe handles every settlement."}
               </p>
@@ -161,9 +146,9 @@ export function HomePage() {
       {/* Corridors */}
       <section className="sec s-navy">
         <div className="si">
-          <p className={`eyebrow ${isFoundation ? "ey-te" : "ey-sa"}`}>Active corridors</p>
+          <p className={`eyebrow ${isOrganization ? "ey-te" : "ey-sa"}`}>Active corridors</p>
           <h2 className="sec-title light" style={{ marginBottom: "2rem" }}>
-            {isFoundation ? "Where collaboration is turning into real activity" : "Live opportunities across corridors"}
+            {isOrganization ? "Where collaboration is turning into real activity" : "Live opportunities across corridors"}
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.7rem", maxWidth: 560 }}>
             {corridors.map((corridor, i) => (
@@ -183,7 +168,7 @@ export function HomePage() {
       </section>
 
       {/* Why Section - Corridors only */}
-      {!isFoundation && (
+      {!isOrganization && (
         <section className="sec s-cream">
           <div className="si">
             <p className="eyebrow ey-sa" style={{ justifyContent: "center", textAlign: "center" }}>
@@ -224,7 +209,7 @@ export function HomePage() {
                   </svg>
                 </div>
                 <div className="c-title">Regional expertise</div>
-                <div className="c-body">Our team understands the corridors between Africa, Brazil, and Southeast Asia — the regulations, trust dynamics, speed.</div>
+                <div className="c-body">Our team understands the corridors between Emerging Domestic Markets and the Global South, the regulations, trust dynamics, and speed.</div>
               </div>
             </div>
           </div>
@@ -232,41 +217,41 @@ export function HomePage() {
       )}
 
       {/* Bridge */}
-      <div className={`bridge ${isFoundation ? "bridge-f" : "bridge-c"}`}>
+      <div className={`bridge ${isOrganization ? "bridge-f" : "bridge-c"}`}>
         <div style={{ maxWidth: 500, margin: "0 auto" }}>
-          <p className={`eyebrow ${isFoundation ? "ey-sa" : "ey-co"}`} style={{ justifyContent: "center" }}>
-            {isFoundation ? "Ready to execute?" : "New to Chambey?"}
+          <p className={`eyebrow ${isOrganization ? "ey-sa" : "ey-co"}`} style={{ justifyContent: "center" }}>
+            {isOrganization ? "Ready to execute?" : "New to Chambey?"}
           </p>
           <p className="bridge-title">
-            {isFoundation ? "Ready to move beyond ideas?" : "New to Chambey?"}
+            {isOrganization ? "Ready to move beyond ideas?" : "New to Chambey?"}
           </p>
           <p className="bridge-desc">
-            {isFoundation
+            {isOrganization
               ? "Chambey Corridors is the activation layer — hire, trade, and partner with verified connections across all three regions."
-              : "Chambey Foundation is where you build your network, clarify your direction, and connect with the broader ecosystem before executing."}
+              : "Chambey Organization is where you build your network, clarify your direction, and connect with the broader ecosystem before executing."}
           </p>
           <button
-            className={isFoundation ? "btn btn-sa" : "btn btn-co"}
-            onClick={() => setMode(isFoundation ? "corridors" : "foundation")}
+            className={isOrganization ? "btn btn-sa" : "btn btn-co"}
+            onClick={isOrganization ? () => setMode("corridors") : () => handleJoinNetwork("homepage")}
           >
-            {isFoundation ? "Explore Chambey Corridors" : "Join the Foundation network"} <ArrowRight width={14} height={14} />
+            {isOrganization ? "Explore Chambey Corridors" : "Join the Organization network"} <ArrowRight width={14} height={14} />
           </button>
         </div>
       </div>
 
       {/* Bottom CTA */}
-      <div className="cta-strip" style={{ background: isFoundation ? "var(--cobalt)" : "var(--salmon)" }}>
+      <div className="cta-strip" style={{ background: isOrganization ? "var(--cobalt)" : "var(--salmon)" }}>
         <div style={{ maxWidth: 500, margin: "0 auto" }}>
           <h2 className="cta-title">
-            {isFoundation ? "Ready to build across borders?" : "Ready to operate across borders?"}
+            {isOrganization ? "Ready to build across borders?" : "Ready to operate across borders?"}
           </h2>
           <p className="cta-sub">
-            {isFoundation
+            {isOrganization
               ? "Join the network. Tell us what you're building."
-              : "Submit your first request. Get matched in 48 hours."}
+              : "Submit your first request. We connect you with the right path."}
           </p>
-          <button className="btn btn-white" onClick={() => handleNavClick("/contact")}>
-            {isFoundation ? "Join the network" : "Start a request"} <ArrowRight width={14} height={14} />
+          <button className="btn btn-white" onClick={isOrganization ? () => handleJoinNetwork("homepage") : () => handleNavClick("/contact")}>
+            {isOrganization ? "Join the network" : "Start a request"} <ArrowRight width={14} height={14} />
           </button>
         </div>
       </div>

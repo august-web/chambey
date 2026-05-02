@@ -146,16 +146,23 @@ img {
 
 .nav-logo {
   font-family: var(--serif);
-  font-size: 21px;
+  font-size: 19px;
   color: var(--navy);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
   cursor: pointer;
   white-space: nowrap;
-  font-weight: 300;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
 }
 
-.nav-logo .co {
-  color: var(--cobalt);
+.nav-logo-mark {
+  width: 28px;
+  height: 28px;
+  color: var(--navy);
+  flex-shrink: 0;
 }
 
 .nav-badge {
@@ -170,6 +177,21 @@ img {
   font-family: var(--sans);
   display: inline-block;
   transition: all 0.3s;
+}
+
+.flogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.flogo-mark {
+  width: 30px;
+  height: 30px;
+  color: var(--cream);
+  flex-shrink: 0;
 }
 
 .badge-f {
@@ -1114,6 +1136,81 @@ textarea.field {
   margin-right: auto;
 }
 
+/* Litany Handoff */
+.handoff-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,32,47,0.72);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.handoff-modal {
+  position: relative;
+  width: min(100%, 440px);
+  background: var(--cream);
+  border: 1px solid rgba(8,48,73,0.11);
+  border-radius: 12px;
+  padding: 2.25rem;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0,32,47,0.32);
+}
+
+.handoff-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--mid);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.handoff-close:hover {
+  background: rgba(8,48,73,0.07);
+}
+
+.handoff-kicker {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(6,110,178,0.1);
+  color: var(--cobalt);
+  padding: 5px 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.handoff-title {
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  line-height: 1.12;
+  color: var(--navy);
+  font-weight: 300;
+  margin-bottom: 0.85rem;
+}
+
+.handoff-copy {
+  color: var(--mid);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 330px;
+  margin: 0 auto 1.5rem;
+}
+
+.handoff-action {
+  margin: 0 auto;
+}
+
 /* Footer */
 .footer {
   background: var(--dark);
@@ -1141,11 +1238,12 @@ textarea.field {
   font-family: var(--serif);
   font-size: 19px;
   color: var(--cream);
-  font-weight: 300;
-}
-
-.flogo .co {
-  color: var(--cobalt);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .flinks {
