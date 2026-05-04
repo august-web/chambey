@@ -2,30 +2,32 @@
 
 > Build beyond your circumstances
 
-A modern, responsive web platform for Chambey - a thriving community of young builders, creators, and thinkers exploring the future through technology.
+A cross-border collaboration and innovation network connecting people, ideas, and markets across Africa, Brazil, Southeast Asia, and Emerging Domestic Markets. Hire talent, find partners, and execute deals with payments handled end-to-end.
 
 ## 🌟 About Chambey
 
-Chambey is a community dedicated to:
-- **Learning** what it means to be part of the Swarm Economy
-- **Driving** purpose by gaining real-world skills
-- **Contributing** to a change-making movement
-- **Enjoying** the journey to economic prosperity
-- **Bridging** skill gaps for opportunities
-- **Breaking** generational cycles
+Chambey operates across two layers:
 
-## 🎯 Our Approach
+- **Chambey Organization** — Where you build your network, clarify your direction, and connect with the broader ecosystem
+- **Chambey Corridors** — The activation layer for hiring, trading, and partnering across borders with verified connections
 
-We operate across three core fields:
+Powered by an ecosystem of three layers:
+- **Litany** — Clarity layer: helps define what you're building and where you're going
+- **Chambey** — Execution layer: matches talent, creates deals, and coordinates partnerships
+- **Mulacanoe** — Transaction layer: handles payments, escrow, and settlement
 
-### 1. **Resource Management & Personal Finance**
-Your financial knowledge, community wealth
+## 🌍 Active Corridors
 
-### 2. **Skill Building & Career Capital**
-Hands-on co-learning experience
+Cross-border opportunities across emerging markets:
 
-### 3. **Community Building & Communication**
-Open communication, shared ownership, and shared interests
+| From | To |
+|------|-----|
+| Nigeria | Indonesia |
+| Ghana | Brazil |
+| Indonesia | Nigeria |
+| Kenya | Vietnam |
+| Brazil | Senegal |
+| Philippines | Ghana |
 
 ## 🛠️ Tech Stack
 
@@ -54,8 +56,10 @@ Open communication, shared ownership, and shared interests
 src/
 ├── components/
 │   ├── layout/           # Main layout components
-│   │   ├── Navbar.tsx
 │   │   ├── Footer.tsx
+│   │   ├── LitanyHandoff.tsx
+│   │   ├── ModeSwitcher.tsx
+│   │   ├── Navbar.tsx
 │   │   └── SiteLayout.tsx
 │   └── ui/               # Reusable UI components
 │       ├── Button.tsx
@@ -63,23 +67,27 @@ src/
 │       ├── Reveal.tsx
 │       └── SectionIntro.tsx
 ├── pages/                # Page components
-│   ├── HomePage.tsx
 │   ├── AboutPage.tsx
-│   ├── TeamPage.tsx
-│   ├── FieldsPage.tsx
 │   ├── ContactPage.tsx
-│   └── NotFoundPage.tsx
+│   ├── FieldsPage.tsx
+│   ├── HomePage.tsx
+│   ├── NotFoundPage.tsx
+│   ├── ProjectsPage.tsx
+│   ├── SupportPage.tsx
+│   └── TeamPage.tsx
 ├── sections/             # Full-width section components
-│   ├── HeroSection.tsx
 │   ├── AboutPreviewSection.tsx
+│   ├── CommunityCtaSection.tsx
 │   ├── FieldsOverviewSection.tsx
-│   └── CommunityCtaSection.tsx
+│   └── HeroSection.tsx
 ├── hooks/                # Custom React hooks
-│   └── useTheme.ts       # Dark/light theme management
+│   ├── useMode.ts        # Organization/Corridors mode toggle
+│   └── useTheme.ts       # Theme management
 ├── data/
 │   └── siteContent.ts    # Centralized content & configuration
 ├── utils/
-│   └── cn.ts             # Class name utilities
+│   ├── cn.ts             # Class name utilities
+│   └── litany.ts         # Litany handoff integration
 ├── styles/
 │   └── theme.css         # Theme and global styles
 ├── App.tsx               # Main app with routing
@@ -97,7 +105,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/chambey.git
+git clone https://github.com/august-web/chambey.git
 cd chambey
 
 # Install dependencies
@@ -117,53 +125,29 @@ npm run dev
 npm run build
 
 # Preview production build
-npm preview
+npm run preview
 ```
 
 ## 📂 Pages & Routes
 
 | Route | Component | Purpose |
 |-------|-----------|---------|
-| `/` | HomePage | Main landing page with hero and highlights |
-| `/about` | AboutPage | Chambey story and mission |
+| `/` | HomePage | Main landing page with hero, corridors, and CTA |
+| `/about` | AboutPage | Chambey story, ecosystem layers, and mission |
 | `/teams` | TeamPage | Leadership and team structure |
-| `/fields` | FieldsPage | Our three core fields of focus |
-| `/contact` | ContactPage | Contact and community engagement |
+| `/fields` | FieldsPage | Team domains and impact areas |
+| `/projects` | ProjectsPage | Cross-border project opportunities |
+| `/contact` | ContactPage | Contact form and engagement |
+| `/support` | SupportPage | Support Chambey with donation tiers |
 | `*` | NotFoundPage | 404 error page |
-
-## Team Content Editing
-
-The Teams page is content-driven from `src/data/siteContent.ts`.
-
-- `leadershipTeam`: Founder and Director spotlight cards
-- `teamClusters`: related/supporting positions grouped by function
-- `collaborationPrinciples`: team operating model
-- `teamRoleHighlights`: image-backed role cards for "Team in Action"
-
-Rendering is handled in `src/pages/TeamPage.tsx`.
 
 ## 🎨 Design Features
 
-- **Dark/Light Mode** - Seamless theme switching via custom hook
-- **Smooth Animations** - Powered by Framer Motion
-- **Responsive Design** - Mobile-first approach with Tailwind CSS
-- **Performance Optimized** - Single-file production build
-- **Accessible Components** - Semantic HTML and ARIA attributes
-
-## 📊 Project Stats
-
-- **20** TypeScript React Components (.tsx)
-- **~740** Lines of Code (TypeScript/TSX)
-- **6** Core Pages (Home, About, Team, Fields, Contact, NotFound)
-- **0** Build Errors / Type Errors
-- **0** Dependency Vulnerabilities
-
-## ✅ Build Status
-
-- ✓ **TypeScript Compilation** - Passes strict mode checks
-- ✓ **Production Build** - 432.67 kB (135.00 kB gzipped)
-- ✓ **2167** Modules Transformed
-- ✓ **Single-File Build** - Optimized bundle output
+- **Organization/Corridors Mode** — Dual mode switcher toggles between Organization and Corridors views
+- **Smooth Animations** — Powered by Framer Motion with page transitions
+- **Responsive Design** — Mobile-first approach with hamburger menu
+- **Performance Optimized** — Single-file production build
+- **Accessible Components** — Semantic HTML and ARIA attributes
 
 ## 🔧 Configuration
 
@@ -181,16 +165,15 @@ Rendering is handled in `src/pages/TeamPage.tsx`.
 
 ### Tailwind CSS
 - Version 4.1.17
-- Dark mode support
-- Custom theme configuration in `styles/theme.css`
+- Custom theme in `styles/theme.css` with navy, cobalt, salmon, teal, and cream palette
 
 ## 📝 Environment Variables
 
-Currently, no environment variables are required for local development.
+No environment variables required for local development.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please feel free to submit pull requests or open issues for bugs and feature requests.
+Contributions are welcome. Please open issues or submit pull requests for bugs and feature requests.
 
 ## 📄 License
 
@@ -198,8 +181,12 @@ This project is open source and available under the MIT License.
 
 ## 👥 Contact
 
-- **Website**: [chambey.example.com](https://chambey.example.com)
+- **Website**: [chambey.org](https://chambey.org)
 - **Contact Page**: [/contact](/contact)
+- **LinkedIn**: [Chambey on LinkedIn](https://linkedin.com)
+- **Instagram**: [Chambey on Instagram](https://instagram.com)
+- **YouTube**: [Chambey on YouTube](https://youtube.com)
+- **Bluesky**: [chambey.org](https://bsky.app/profile/chambey.org)
 
 ---
 
