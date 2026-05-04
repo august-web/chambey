@@ -1,6 +1,6 @@
 # Chambey
 
-> Building the Next Generation of Innovators
+> Build beyond your circumstances
 
 A modern, responsive web platform for Chambey - a thriving community of young builders, creators, and thinkers exploring the future through technology.
 

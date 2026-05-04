@@ -26,6 +26,13 @@ export function Footer() {
                 {item.label}
               </button>
             ))}
+            <button
+              className="flink"
+              style={{ color: "var(--tealD)" }}
+              onClick={() => handleNavClick("/support")}
+            >
+              Support
+            </button>
           </div>
         </div>
         <div className="fb">

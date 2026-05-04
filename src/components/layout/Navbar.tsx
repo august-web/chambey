@@ -49,6 +49,13 @@ export function Navbar() {
               {item.label}
             </button>
           ))}
+          <button
+            className="nav-link"
+            style={{ color: "var(--tealD)", fontWeight: 500 }}
+            onClick={() => handleNavClick("/support")}
+          >
+            Support
+          </button>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -94,6 +101,13 @@ export function Navbar() {
                   {item.label}
                 </button>
               ))}
+              <button
+                className="py-1 text-sm font-medium"
+                style={{ color: "var(--tealD)" }}
+                onClick={() => handleNavClick("/support")}
+              >
+                Support
+              </button>
             </div>
           </motion.nav>
         ) : null}
