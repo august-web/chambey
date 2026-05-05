@@ -15,7 +15,7 @@ export function TeamPage() {
   };
 
   const handleJoinNetwork = () => {
-    openLitanyHandoff({ intent: "user", campaign: "teams" });
+    openLitanyHandoff({ intent: "user" });
   };
 
   return (
