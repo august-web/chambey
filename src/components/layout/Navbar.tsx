@@ -19,7 +19,7 @@ export function Navbar() {
 
   const isOrganization = mode === "Organization";
   const handleJoinClick = () => {
-    openLitanyHandoff({ intent: "user", campaign: "navbar" });
+    openLitanyHandoff({ intent: "user" });
     setIsOpen(false);
   };
 

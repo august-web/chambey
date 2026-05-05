@@ -2,20 +2,20 @@ export type LitanyIntent = "user" | "partner" | "donor";
 
 export type LitanyHandoffDetail = {
   intent?: LitanyIntent;
-  campaign?: string;
 };
+
+const LITANY_BASE_URL = import.meta.env.VITE_LITANY_BASE_URL ?? "https://litany.world";
 
 export const buildLitanySignupUrl = ({
   intent = "user",
-  campaign = "homepage",
 }: LitanyHandoffDetail = {}) => {
   const params = new URLSearchParams({
-    source: "chambey",
+    utm_source: "chambey",
+    utm_medium: "referral",
     intent,
-    campaign,
   });
 
-  return `https://litany.world/register?${params.toString()}`;
+  return `${LITANY_BASE_URL}/register?${params.toString()}`;
 };
 
 export const openLitanyHandoff = (detail: LitanyHandoffDetail = {}) => {

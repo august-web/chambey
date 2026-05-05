@@ -15,8 +15,8 @@ export function HomePage() {
     navigate(href);
   };
 
-  const handleJoinNetwork = (campaign = "homepage") => {
-    openLitanyHandoff({ intent: "user", campaign });
+  const handleJoinNetwork = () => {
+    openLitanyHandoff({ intent: "user" });
   };
 
   return (
@@ -69,7 +69,7 @@ export function HomePage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="hero-btns"
           >
-            <button className={isOrganization ? "btn btn-co" : "btn btn-sa"} onClick={isOrganization ? () => handleJoinNetwork("homepage") : () => handleNavClick("/contact")}>
+            <button className={isOrganization ? "btn btn-co" : "btn btn-sa"} onClick={isOrganization ? () => handleJoinNetwork() : () => handleNavClick("/contact")}>
               {isOrganization ? "Join the network" : "Start request"} <ArrowRight width={15} height={15} />
             </button>
             <button className="btn btn-ghost" onClick={() => handleNavClick("/about")}>
@@ -232,7 +232,7 @@ export function HomePage() {
           </p>
           <button
             className={isOrganization ? "btn btn-sa" : "btn btn-co"}
-            onClick={isOrganization ? () => setMode("corridors") : () => handleJoinNetwork("homepage")}
+            onClick={isOrganization ? () => setMode("corridors") : () => handleJoinNetwork()}
           >
             {isOrganization ? "Explore Chambey Corridors" : "Join the Organization network"} <ArrowRight width={14} height={14} />
           </button>
@@ -250,7 +250,7 @@ export function HomePage() {
               ? "Join the network. Tell us what you're building."
               : "Submit your first request. We connect you with the right path."}
           </p>
-          <button className="btn btn-white" onClick={isOrganization ? () => handleJoinNetwork("homepage") : () => handleNavClick("/contact")}>
+          <button className="btn btn-white" onClick={isOrganization ? () => handleJoinNetwork() : () => handleNavClick("/contact")}>
             {isOrganization ? "Join the network" : "Start a request"} <ArrowRight width={14} height={14} />
           </button>
         </div>
