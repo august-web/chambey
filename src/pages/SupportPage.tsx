@@ -116,19 +116,16 @@ export function SupportPage() {
               { num: "3", label: "Opportunities", sub: "become real" },
               { num: "4", label: "Real outcomes", sub: "across borders", accent: true },
             ].map((step, i) => (
-              <div key={i}>
-                <div className={cn("don-flow-step", step.accent ? "don-flow-step-accent" : "")}>
-                  <div className={cn("don-flow-num", step.accent ? "don-flow-num-accent" : "")}>
-                    {step.num}
-                  </div>
-                  <div className={cn("don-flow-label", step.accent ? "don-flow-label-accent" : "")}>
-                    {step.label}
-                  </div>
-                  <div className={cn("don-flow-sub", step.accent ? "don-flow-sub-accent" : "")}>
-                    {step.sub}
-                  </div>
+              <div key={i} className={cn("don-flow-step", step.accent ? "don-flow-step-accent" : "")}>
+                <div className={cn("don-flow-num", step.accent ? "don-flow-num-accent" : "")}>
+                  {step.num}
                 </div>
-                {i < 3 && <div className="don-flow-arrow">→</div>}
+                <div className={cn("don-flow-label", step.accent ? "don-flow-label-accent" : "")}>
+                  {step.label}
+                </div>
+                <div className={cn("don-flow-sub", step.accent ? "don-flow-sub-accent" : "")}>
+                  {step.sub}
+                </div>
               </div>
             ))}
           </div>
@@ -161,21 +158,6 @@ export function SupportPage() {
                 <div className="c-body">{item.description}</div>
               </div>
             ))}
-          </div>
-          <div style={{ marginTop: "2rem", textAlign: "center" }}>
-            <a
-              aria-label="Chambey Organization"
-              href="https://app.candid.org/profile/15510989/chambey-organization-99-2404801/?pkId=fce6856e-d617-42b3-8d0b-0ca7b53b451c"
-              target="_blank"
-              rel="noreferrer"
-              style={{ display: "inline-flex" }}
-            >
-              <img
-                alt=""
-                src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/15510989/svg"
-                style={{ width: 120, height: "auto" }}
-              />
-            </a>
           </div>
         </div>
       </section>
@@ -280,36 +262,33 @@ export function SupportPage() {
               { icon: Globe, title: "Proof & data", desc: "Outcomes generate credibility, reports, and evidence for institutional funders" },
               { icon: Loader, title: "Institutional funding", desc: "Grants, partnerships, and institutional capital amplify the impact further", accent: true },
             ].map((item, i) => (
-              <div key={i}>
-                <div className={cn("don-loop-item", item.accent ? "don-loop-item-accent" : "")}>
-                  <div
-                    className="don-loop-icon"
-                    style={{
-                      background: item.accent ? "rgba(0,150,121,0.2)" : `rgba(${item.icon === DollarSign ? "0,150,121" : item.icon === Users ? "6,110,178" : item.icon === Handshake ? "241,136,100" : "247,178,96"},0.15)`,
-                      color: item.accent
-                        ? "var(--tealD)"
-                        : item.icon === DollarSign
-                        ? "var(--tealD)"
-                        : item.icon === Users
-                        ? "var(--cobalt)"
-                        : item.icon === Handshake
-                        ? "var(--salmon)"
-                        : "#A07000",
-                    }}
-                  >
-                    {(() => {
-                      const Icon = item.icon;
-                      return <Icon width={20} height={20} />;
-                    })()}
-                  </div>
-                  <div className={cn("don-loop-title", item.accent ? "don-loop-title-accent" : "")}>
-                    {item.title}
-                  </div>
-                  <div className={cn("don-loop-desc", item.accent ? "don-loop-desc-accent" : "")}>
-                    {item.desc}
-                  </div>
+              <div key={i} className={cn("don-loop-item", item.accent ? "don-loop-item-accent" : "")}>
+                <div
+                  className="don-loop-icon"
+                  style={{
+                    background: item.accent ? "rgba(0,150,121,0.2)" : `rgba(${item.icon === DollarSign ? "0,150,121" : item.icon === Users ? "6,110,178" : item.icon === Handshake ? "241,136,100" : "247,178,96"},0.15)`,
+                    color: item.accent
+                      ? "var(--tealD)"
+                      : item.icon === DollarSign
+                      ? "var(--tealD)"
+                      : item.icon === Users
+                      ? "var(--cobalt)"
+                      : item.icon === Handshake
+                      ? "var(--salmon)"
+                      : "#A07000",
+                  }}
+                >
+                  {(() => {
+                    const Icon = item.icon;
+                    return <Icon width={20} height={20} />;
+                  })()}
                 </div>
-                {i < 4 && <div className="don-loop-arrow">→</div>}
+                <div className={cn("don-loop-title", item.accent ? "don-loop-title-accent" : "")}>
+                  {item.title}
+                </div>
+                <div className={cn("don-loop-desc", item.accent ? "don-loop-desc-accent" : "")}>
+                  {item.desc}
+                </div>
               </div>
             ))}
           </div>

@@ -44,17 +44,6 @@ export function AboutPage() {
                   Chambey connects people across regions so that collaboration leads to real economic outcomes, not just introductions.
                 </p>
               )}
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <span className="tag" style={{ background: "rgba(6,110,178,0.1)", color: "var(--cobalt)", fontSize: 12, padding: "5px 13px" }}>
-                  Africa
-                </span>
-                <span className="tag" style={{ background: "rgba(6,110,178,0.1)", color: "var(--cobalt)", fontSize: 12, padding: "5px 13px" }}>
-                  Brazil
-                </span>
-                <span className="tag" style={{ background: "rgba(6,110,178,0.1)", color: "var(--cobalt)", fontSize: 12, padding: "5px 13px" }}>
-                  Southeast Asia
-                </span>
-              </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div className={`card ${isOrganization ? "card-f" : "card-c"}`} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>

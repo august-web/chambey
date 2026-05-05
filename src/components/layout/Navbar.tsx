@@ -32,7 +32,7 @@ export function Navbar() {
     >
       <div className="nav-inner">
         <Link to="/" className="nav-logo" onClick={() => handleNavClick("/")}>
-          <img src="/favicon.png" alt="" className="nav-logo-mark" />
+          <img src={isOrganization ? "/favicon.png" : "/logo-corridors.png"} alt="" className="nav-logo-mark" style={{ width: isOrganization ? 22 : 24, height: "auto" }} />
           <span>CHAMBEY</span>
           <span className={cn("nav-badge", isOrganization ? "badge-f" : "badge-c")}>
             {isOrganization ? "Organization" : "Corridors"}
