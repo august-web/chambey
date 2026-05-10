@@ -71,6 +71,10 @@ export type DonationTier = {
   benefits: string[];
   color: string;
   featured?: boolean;
+  links: {
+    monthly: string;
+    oneTime: string;
+  };
 };
 
 export type UseCase = {
@@ -193,7 +197,7 @@ export const donationTiers: DonationTier[] = [
   {
     name: "Contributor",
     label: "Contributor",
-    monthly: "$10 – $50",
+    monthly: "$10",
     oneTime: "$50 – $250",
     description: "Individuals who believe in expanding access to opportunity.",
     benefits: [
@@ -202,11 +206,15 @@ export const donationTiers: DonationTier[] = [
       "Awareness of initiatives as they launch",
     ],
     color: "teal",
+    links: {
+      monthly: "https://donate.stripe.com/fZuaEW1FbgtKgMJgNT1Nu06",
+      oneTime: "https://donate.stripe.com/5kQfZg97Ddhy0NL4171Nu05",
+    },
   },
   {
     name: "Partner",
     label: "Partner",
-    monthly: "$100 – $500",
+    monthly: "$100",
     oneTime: "$500 – $2,500",
     description: "Builders, operators, and small Organizations supporting cross-border collaboration.",
     benefits: [
@@ -217,12 +225,16 @@ export const donationTiers: DonationTier[] = [
     ],
     color: "cobalt",
     featured: true,
+    links: {
+      monthly: "https://donate.stripe.com/7sY00icjPgtK1RPapv1Nu04",
+      oneTime: "https://donate.stripe.com/5kQbJ097DfpG0NL8hn1Nu03",
+    },
   },
   {
     name: "Sponsor",
     label: "Sponsor",
-    monthly: "$5,000+",
-    oneTime: "$25,000+",
+    monthly: "$5,000",
+    oneTime: "$25,500",
     description: "Institutions, funds, and Organizations supporting ecosystem growth across regions.",
     benefits: [
       "Strategic collaboration opportunities",
@@ -231,6 +243,10 @@ export const donationTiers: DonationTier[] = [
       "Alignment with institutional grant partnerships",
     ],
     color: "salmon",
+    links: {
+      monthly: "https://donate.stripe.com/cNi28qcjPa5m6859lr1Nu02",
+      oneTime: "https://donate.stripe.com/fZu6oG5VrelC2VTeFL1Nu01",
+    },
   },
 ];
 

@@ -20,22 +20,41 @@ export function Footer() {
         <div className="ft">
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-start" }}>
             <div className="flogo">
-              <img src={isOrganization ? "/favicon.png" : "/logo-corridors.png"} alt="" className="flogo-mark" style={{ width: isOrganization ? 22 : 24, height: "auto" }} />
-              <span>CHAMBEY</span>
+              {isOrganization ? (
+                <>
+                  <img src="/favicon.png" alt="" className="flogo-mark" style={{ width: 40, height: "auto" }} />
+                  <span>CHAMBEY</span>
+                </>
+              ) : (
+                <>
+                  <img src="/icononly.png" alt="" className="flogo-mark" style={{ width: 44, height: "auto" }} />
+                  <span>CHAMBEY</span>
+                </>
+              )}
             </div>
             {showCandidSeal && (
-              <a
-                aria-label="Chambey Organization"
-                href="https://app.candid.org/profile/15510989/chambey-organization-99-2404801/?pkId=fce6856e-d617-42b3-8d0b-0ca7b53b451c"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  alt=""
-                  src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/15510989/svg"
-                  style={{ width: 100, height: "auto" }}
-                />
-              </a>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+                <a
+                  aria-label="Chambey Organization"
+                  href="https://app.candid.org/profile/15510989/chambey-organization-99-2404801/?pkId=fce6856e-d617-42b3-8d0b-0ca7b53b451c"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    alt=""
+                    src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/15510989/svg"
+                    style={{ width: 100, height: "auto" }}
+                  />
+                </a>
+                <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                  <span style={{ fontSize: 12, fontWeight: 500, color: "var(--cream)" }}>
+                    EIN: 99-2404801
+                  </span>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)" }}>
+                    501(c)(3) Public Charity
+                  </span>
+                </div>
+              </div>
             )}
           </div>
           <div className="flinks">

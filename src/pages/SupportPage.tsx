@@ -6,20 +6,11 @@ import { cn } from "@/utils/cn";
 
 export function SupportPage() {
   const [freq, setFreq] = useState<"monthly" | "onetime">("monthly");
-  const [selectedTier, setSelectedTier] = useState<string | null>(null);
 
   const tierColors: Record<string, string> = {
     teal: "var(--tealD)",
     cobalt: "var(--cobalt)",
     salmon: "var(--salmon)",
-  };
-
-  const handleSelectTier = (tier: string) => {
-    setSelectedTier(tier);
-  };
-
-  const closeModal = () => {
-    setSelectedTier(null);
   };
 
   return (
@@ -220,13 +211,15 @@ export function SupportPage() {
                     </div>
                   ))}
                 </div>
-                <button
+                <a
+                  href={freq === "monthly" ? tier.links.monthly : tier.links.oneTime}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn don-tier-btn"
                   style={{ background: tierColors[tier.color], color: "#fff", width: "100%", justifyContent: "center" }}
-                  onClick={() => handleSelectTier(tier.label)}
                 >
                   Support as {tier.label}
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -323,42 +316,7 @@ export function SupportPage() {
         </div>
       </section>
 
-      {/* Confirmation Modal */}
-      {selectedTier && (
-        <div
-          style={{
-            display: "flex",
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.6)",
-            zIndex: 500,
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "2rem",
-          }}
-        >
-          <div style={{ background: "var(--cream)", borderRadius: 18, padding: "2.5rem", maxWidth: 440, width: "100%", textAlign: "center", position: "relative" }}>
-            <button
-              onClick={closeModal}
-              style={{ position: "absolute", top: "1rem", right: "1rem", fontSize: 18, color: "var(--mid)", background: "none", border: "none", cursor: "pointer" }}
-            >
-              ✕
-            </button>
-            <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(0,150,121,0.1)", color: "var(--tealD)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem" }}>
-              <Check width={24} height={24} />
-            </div>
-            <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.6rem", fontWeight: 300, color: "var(--navy)", marginBottom: "0.75rem" }}>
-              Thank you for your support
-            </h3>
-            <p style={{ color: "var(--mid)", fontSize: 14, lineHeight: 1.65, marginBottom: "1.5rem" }}>
-              We'll be in touch with next steps for your <strong>{selectedTier}</strong> level of involvement.
-            </p>
-            <button className="btn btn-co" onClick={closeModal} style={{ width: "100%", justifyContent: "center" }}>
-              Continue exploring Chambey
-            </button>
-          </div>
-        </div>
-      )}
+
     </motion.div>
   );
 }
